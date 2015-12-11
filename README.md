@@ -4,7 +4,7 @@ Dynamic Nginx Load Balancing for Tutum
 When services stop, start, or scale in Tutum, this container dynamically reconfigure & reload Nginx to load balance services.
 
 ## Running the Load Balancer
-Run one or more copies of this image on Tutum.<br/>
+Run one or more copies of `willrstern/tutum-nginx` (or your image built from this repo) on Tutum.<br/>
 __IMPORTANT__: When creating the service, make sure to choose the `Full Access` API role on the Environment Variables page.
 
 __OPTIONAL__: If you want to support redirection of internal and external traffic, then assign a `PRIVATE_IP=123.45.67.89` environment variable to the Nginx service.
