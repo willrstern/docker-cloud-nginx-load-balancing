@@ -1,7 +1,8 @@
 # tutum-nginx-load-balancing
 Dynamic Nginx Load Balancing for Tutum
 
-When services stop, start, or scale in Tutum, this container dynamically reconfigure & reload Nginx to load balance services.
+Simply run the `willrstern/tutum-nginx` container.
+When services stop, start, or scale in Tutum, the container will dynamically reconfigure & reload Nginx to load balance services.
 
 ## Running the Load Balancer
 Run one or more copies of `willrstern/tutum-nginx` (or your image built from this repo) on Tutum.<br/>
