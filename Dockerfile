@@ -30,6 +30,7 @@ WORKDIR /app
 COPY ./package.json /app/package.json
 RUN npm install --production
 
+COPY ./.babelrc /app/.babelrc
 COPY ./tutum-watch.js /app/tutum-watch.js
 COPY ./lib /app/lib
 COPY ./nginx.conf /etc/nginx/nginx.conf
