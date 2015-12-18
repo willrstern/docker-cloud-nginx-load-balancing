@@ -6,12 +6,11 @@ Dynamic Nginx Load Balancing for Tutum
 - This allows `willrstern/tutum-nginx` containers to dynamically load balance all services with the `NGINX_SERVER_NAME` ENV variable set.
 
 ## 1) Tutum Setup
-Create 2 node clusters on tutum, one with the deploy tag of `apps` and one with the deploy tag of `nginx`.
-<img src="https://farm1.staticflickr.com/628/23806789896_555c9f486b.jpg" style="width: 200px;" />
+- Create 2 node clusters on tutum, one with the deploy tag of `apps` and one with the deploy tag of `nginx`.
+<br/><img src="https://farm1.staticflickr.com/628/23806789896_555c9f486b.jpg" style="width: 200px;" />
+<br/><br/>As the names imply, you will give all of your apps, services, databases, etc an `apps` deploy tag, while only `willrstern/tutum-nginx` containers get the `nginx` tag.  This way, nginx will always be on the exact same IP addresses, so DNS can be directed reliably.
 
-As the names imply, you will give all of your apps, services, databases, etc an `apps` deploy tag, while only `willrstern/tutum-nginx` containers get the `nginx` tag.  This way, nginx will always be on the exact same IP addresses, so DNS can be directed reliably.
-
-Send all of your DNS entries & subdomains to the `nginx` node IP addresses.
+- Send all of your DNS entries & subdomains to the `nginx` node IP addresses.
 (NOTE: [DynDNS (dyn.com)](http://dyn.com) supports active failover for IP addresses in case a node goes down, this is a great solution for DNS)
 
 ## 2) Running the Load Balancer
