@@ -6,6 +6,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "predeploy": "docker build -t willrstern/tutum-nginx .",
+    "deploy": "docker push willrstern/tutum-nginx",
     "start": "NGINX_RELOAD=false NGINX_CONFIG_FILE='./default.conf' node tutum-watch.js"
   },
   "dependencies": {
