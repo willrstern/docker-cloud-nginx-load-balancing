@@ -5,6 +5,9 @@
   "main": "tutum-watch.js",
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "start": "NGINX_RELOAD=false NGINX_CONFIG_FILE='./default.conf' node tutum-watch.js"
+  },
   "dependencies": {
     "axios": "^0.7.0",
     "babel-preset-es2015": "^6.3.13",
