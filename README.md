@@ -15,7 +15,8 @@ Dynamic Nginx Load Balancing for Tutum
 
 ## 2) Running the Load Balancer
 Run one or more copies of `willrstern/tutum-nginx` on Tutum.
-- add the `nginx` deploy tag & choose the `every node` strategy.<br/>![](https://farm6.staticflickr.com/5691/23724570952_99cc571d7e_z.jpg)
+- add the `nginx` deploy tag & choose the `every node` strategy.<br/>
+- Choose the autorestart `always` option as well.<br/>![](https://farm6.staticflickr.com/5691/23724570952_99cc571d7e_z.jpg)
 - __MAKE SURE__ to choose the `Full Access` API role on the Environment Variables page or the load balancer won't be able to detect running services via the Tutum API.<br/>![](https://farm6.staticflickr.com/5659/23806877596_fccba186d5_z.jpg)
 
 The Nginx service will now listen to Tutum's stream API.  As services change, a new Nginx configuration is generated & tested with `nginx -t`.  If Nginx accepts the new configuration, it will reload nginx.
