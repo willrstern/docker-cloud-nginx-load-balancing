@@ -28,3 +28,6 @@ node_modules
 
 # Dev Config File
 default.conf
+
+# Certs
+certs
