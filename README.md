@@ -38,15 +38,15 @@ __NOTE__: Apps don't need to expose ports to be load balanced!  Tutum gives each
 ## 4) SSL Termination
 - create a cert
 - concatenate the `.key` and `.crt` files
-- replace newlines with `\n` and copy the output
+- replace newlines with `\\n` and copy the output
 ```
 openssl req -x509 -newkey rsa:2048 -keyout mysite.key -out mysite.crt -days 1080 -nodes -subj '/CN=*/O=My Company Name LTD./C=US'
 cat mysite.key mysite.crt > mysite.combined.crt
-awk 1 ORS='\\n' mysite.combined.crt
+awk 1 ORS='\\\\n' mysite.combined.crt
 ```
-- add the combined key & cert into `NGINX_CERTS` env var
+- add the combined key & cert into `NGINX_CERTS` env var to your `Dockerfile`
 ```
-ENV NGINX_CERTS -----BEGIN RSA PRIVATE KEY-----\nMIIEogIBAAKCAQEA...and so on
+ENV NGINX_CERTS -----BEGIN RSA PRIVATE KEY-----\\nMIIEogIBAAKCAQEA...and so on
 ```
 
 If you have multiple `NGINX_VIRTUAL_HOST`s, add a cert for each host with `,` in-between: i.e.
