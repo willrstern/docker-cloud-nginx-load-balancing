@@ -32,10 +32,10 @@ RUN npm install --production
 
 COPY ./.babelrc /app/.babelrc
 COPY ./tutum-watch.js /app/tutum-watch.js
-COPY ./lib /app/lib
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./tutum-watch /usr/local/bin/tutum-watch
 RUN chmod +x /usr/local/bin/tutum-watch
+COPY ./lib /app/lib
 
 EXPOSE 80
 
