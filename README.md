@@ -6,7 +6,7 @@ Dynamic Nginx Load Balancing for Docker Cloud
 - This allows `willrstern/docker-cloud-nginx` containers to dynamically load balance all services with `NGINX_LB` ENV variables set.
 
 ## 1) Docker Cloud Setup
-- Create 2 node clusters on tutum, one with the deploy tag of `apps` and one with the deploy tag of `nginx`.
+- Create 2 node clusters on Docker Cloud, one with the deploy tag of `apps` and one with the deploy tag of `nginx`.
 <br/><img src="https://farm1.staticflickr.com/628/23806789896_555c9f486b.jpg" style="width: 200px;" />
 <br/><br/>As the names imply, you will give all of your apps, services, databases, etc an `apps` deploy tag, while only `willrstern/docker-cloud-nginx` containers get the `nginx` tag.  This way, nginx will always be on the exact same IP addresses, so DNS can be assigned to those IP addresses.
 
@@ -14,7 +14,7 @@ Dynamic Nginx Load Balancing for Docker Cloud
 (NOTE: [DynDNS (dyn.com)](http://dyn.com) supports active failover for IP addresses in case a node goes down, this is a great solution for DNS)
 
 ## 2) Running the Load Balancer
-Run one or more copies of `willrstern/docker-cloud-nginx` on Tutum.
+Run one or more copies of `willrstern/docker-cloud-nginx` on Docker Cloud.
 - add the `nginx` deploy tag & choose the `every node` strategy.<br/>
 - Choose the autorestart `always` option as well.<br/>![](https://farm6.staticflickr.com/5691/23724570952_99cc571d7e_z.jpg)
 - __MAKE SURE__ to choose the `Full Access` API role on the Environment Variables page or the load balancer won't be able to detect running services via the Docker Cloud API.<br/>![](https://farm6.staticflickr.com/5659/23806877596_fccba186d5_z.jpg)
