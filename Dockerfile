@@ -31,12 +31,12 @@ COPY ./package.json /app/package.json
 RUN npm install --production
 
 COPY ./.babelrc /app/.babelrc
-COPY ./tutum-watch.js /app/tutum-watch.js
+COPY ./docker-cloud-watch.js /app/docker-cloud-watch.js
 COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./tutum-watch /usr/local/bin/tutum-watch
-RUN chmod +x /usr/local/bin/tutum-watch
+COPY ./docker-cloud-watch /usr/local/bin/docker-cloud-watch
+RUN chmod +x /usr/local/bin/docker-cloud-watch
 COPY ./lib /app/lib
 
 EXPOSE 80
 
-CMD ["tutum-watch"]
+CMD ["docker-cloud-watch"]

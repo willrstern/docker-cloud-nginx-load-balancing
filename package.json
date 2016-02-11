@@ -8,7 +8,7 @@
   "scripts": {
     "predeploy": "docker build -t willrstern/tutum-nginx .",
     "deploy": "docker push willrstern/tutum-nginx",
-    "start": "NGINX_RELOAD=false NGINX_CERTS='./certs' NGINX_CONFIG_FILE='./default.conf' node tutum-watch.js"
+    "start": "NGINX_RELOAD=false NGINX_CERTS='./certs' NGINX_CONFIG_FILE='./default.conf' node docker-cloud-watch.js"
   },
   "dependencies": {
     "axios": "^0.7.0",
