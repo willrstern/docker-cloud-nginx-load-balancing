@@ -8,7 +8,7 @@ echo "[nginx] booting container."
 echo "[nginx] starting nginx service..."
 service nginx start
 
-node tutum-watch
+node docker-cloud-watch
 
 # Follow the logs to allow the script to continue running
 tail -f /var/log/nginx/*.log
