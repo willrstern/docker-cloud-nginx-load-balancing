@@ -4,6 +4,7 @@ Dynamic Nginx Load Balancing for Docker Cloud
 - All Docker Cloud services are acessible through Docker Cloud's API, this allows us to use Docker Cloud's API for service discovery.
 - When services stop, start, or scale in Docker Cloud, `willrstern/docker-cloud-nginx` containers will notice.
 - This allows `willrstern/docker-cloud-nginx` containers to dynamically load balance all services with `NGINX_LB` ENV variables set.
+- If a config fails, it will use the last-good-config.  See Slack integration.
 
 ## 1) Docker Cloud Setup
 - Create 2 node clusters on Docker Cloud, one with the deploy tag of `apps` and one with the deploy tag of `nginx`.
@@ -61,6 +62,11 @@ ENV NGINX_VIRTUAL_HOST mysite.com,othersite.com
 # only do SSL on othersite.com
 ENV NGINX_CERTS ,<othersite.com key & cert>
 ```
+
+## 5) Slack Integration
+- Before reloading a config, it runs `nginx -t` to make sure it is valid
+- If a config fails, it will continue using the last-good-config until a working config is generated
+- Add `SLACK_WEBHOOK=https://hooks.slack.com/services/T02RK...` env var to get notifications when a config fails.
 
 ## Local Development Workflow
 - Set the `DOCKERCLOUD_AUTH` & `NGINX_LB_NAME` environment variables and run `npm start`:
