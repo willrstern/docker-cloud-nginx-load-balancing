@@ -16,9 +16,10 @@ Dynamic Nginx Load Balancing for Docker Cloud
 ## 2) Running the Load Balancer
 Run one or more copies of `willrstern/docker-cloud-nginx` on Docker Cloud.
 - add the `nginx` deploy tag & choose the `every node` strategy.<br/>
-- Choose the autorestart `always` option as well.<br/>![](https://farm6.staticflickr.com/5691/23724570952_99cc571d7e_z.jpg)
-- __MAKE SURE__ to choose the `Full Access` API role on the Environment Variables page or the load balancer won't be able to detect running services via the Docker Cloud API.<br/>![](https://farm6.staticflickr.com/5659/23806877596_fccba186d5_z.jpg)
-- Give the LB a name via the `NGINX_LB_NAME=prod` env variable.
+- Choose the autorestart `always` option as well.<br/>![](https://farm2.staticflickr.com/1532/25069136655_10f9bc9719_z.jpg)
+- __MAKE SURE__ to choose the `Full Access` API role on the Environment Variables page or the load balancer won't be able to detect running services via the Docker Cloud API.
+- Give the LB a name via the `NGINX_LB_NAME=prod` env variable.<br/>![](https://farm2.staticflickr.com/1716/25042790246_3c514d97d4_z.jpg)
+
 
 The Nginx service will now listen to Docker Cloud's stream API.  As services change, this LB will balance services with the `NGINX_LB=prod` env var. A new Nginx configuration is generated & tested with `nginx -t`.  If Nginx accepts the new configuration, it will reload nginx.
 
@@ -67,7 +68,7 @@ ENV NGINX_CERTS ,<othersite.com key & cert>
 $ DOCKERCLOUD_AUTH="Basic ...." NGINX_LB_NAME=prod npm start
 ```
 It will now watch your Docker Cloud cluster for events and generate a config to `./default.conf`
-  - __How do I get those variables?__ 
-  - Run any service on Docker Cloud with the `Full Access` API role on the environment variables page.
-  - Now inspect the running service's `Environment Variables` tab to see the `DOCKERCLOUD_AUTH` value.
+  - __How do I get the `DOCKERCLOUD_AUTH` variable?__ 
+    - Run any service on Docker Cloud with the `Full Access` API role on the environment variables page.
+    - Now inspect the running service's `Environment Variables` tab to see the `DOCKERCLOUD_AUTH` value.
 
