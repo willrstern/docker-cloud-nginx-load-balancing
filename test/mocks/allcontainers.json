@@ -1,0 +1,170 @@
+[
+  {
+    "container_envvars": [
+      {
+        "key": "NGINX_CERTS",
+        "value": "test.com,test2.com"
+      },
+      {
+        "key": "NGINX_LB",
+        "value": "test"
+      },
+      {
+        "key": "NGINX_PORT",
+        "value": "3000"
+      },
+      {
+        "key": "NGINX_VIRTUAL_HOST",
+        "value": "test.com,test2.com"
+      }
+    ],
+    "private_ip": "10.7.0.1",
+    "name": "web-prod-1",
+    "state": "Running"
+  },
+  {
+    "container_envvars": [
+      {
+        "key": "NGINX_CERTS",
+        "value": "test2.com,test.com"
+      },
+      {
+        "key": "NGINX_LB",
+        "value": "test"
+      },
+      {
+        "key": "NGINX_PORT",
+        "value": "3001"
+      },
+      {
+        "key": "NGINX_VIRTUAL_HOST",
+        "value": "test2.com,test.com"
+      }
+    ],
+    "private_ip": "10.7.0.2",
+    "name": "web-prod-2",
+    "state": "Running"
+  },
+  {
+    "container_envvars": [
+      {
+        "key": "NGINX_CERTS",
+        "value": "test.com,test2.com"
+      },
+      {
+        "key": "NGINX_LB",
+        "value": "test"
+      },
+      {
+        "key": "NGINX_PORT",
+        "value": "3002"
+      },
+      {
+        "key": "NGINX_VIRTUAL_HOST",
+        "value": "test.com,test2.com"
+      }
+    ],
+    "private_ip": "10.7.0.3",
+    "name": "web-prod-3",
+    "state": "Running"
+  },
+  {
+    "container_envvars": [
+      {
+        "key": "NGINX_CERTS",
+        "value": "test.com,test2.com"
+      },
+      {
+        "key": "NGINX_LB",
+        "value": "test"
+      },
+      {
+        "key": "NGINX_PORT",
+        "value": "3000"
+      },
+      {
+        "key": "NGINX_VIRTUAL_HOST",
+        "value": "test.com,test2.com"
+      }
+    ],
+    "private_ip": "10.7.0.4",
+    "name": "web-prod-4",
+    "state": "Stopped"
+  },
+  {
+    "container_envvars": [
+      {
+        "key": "NGINX_CERTS",
+        "value": "test.com,test2.com"
+      },
+      {
+        "key": "NGINX_LB",
+        "value": "staging"
+      },
+      {
+        "key": "NGINX_PORT",
+        "value": "3000"
+      },
+      {
+        "key": "NGINX_VIRTUAL_HOST",
+        "value": "test.com,test2.com"
+      }
+    ],
+    "private_ip": "10.7.0.4",
+    "name": "web-prod-5",
+    "state": "Running"
+  },
+  {
+    "container_envvars": [
+      {
+        "key": "NGINX_CERTS",
+        "value": "test3.com"
+      },
+      {
+        "key": "NGINX_LB",
+        "value": "test"
+      },
+      {
+        "key": "NGINX_VIRTUAL_HOST",
+        "value": "test3.com"
+      }
+    ],
+    "private_ip": "10.7.0.6",
+    "name": "web-prod-6",
+    "state": "Running"
+  },
+  {
+    "container_envvars": [
+      {
+        "key": "NGINX_LB",
+        "value": "test"
+      },
+      {
+        "key": "NGINX_VIRTUAL_HOST",
+        "value": "test4.com"
+      }
+    ],
+    "private_ip": "10.7.0.7",
+    "name": "web-prod-7",
+    "state": "Running"
+  },
+  {
+    "container_envvars": [
+      {
+        "key": "NGINX_CERTS",
+        "value": ",test6.com"
+      },
+      {
+        "key": "NGINX_LB",
+        "value": "test"
+      },
+      {
+        "key": "NGINX_VIRTUAL_HOST",
+        "value": "test5.com,test6.com"
+      }
+    ],
+    "private_ip": "10.7.0.8",
+    "name": "web-prod-8",
+    "state": "Running"
+  }
+]
