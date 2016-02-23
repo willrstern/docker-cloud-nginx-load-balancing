@@ -8,8 +8,10 @@
   "scripts": {
     "predeploy": "docker build -t willrstern/docker-cloud-nginx:latest .",
     "deploy": "docker push willrstern/docker-cloud-nginx:latest",
+    "mocha": "mocha --compilers js:babel-register",
     "start": "NGINX_RELOAD=false NGINX_CERTS='./certs' NGINX_CONFIG_FILE='./default.conf' node docker-cloud-watch.js",
-    "test": "NGINX_CERTS='./certs' NGINX_LB_NAME=test mocha --compilers js:babel-register"
+    "pretest": "docker build -t willrstern/docker-cloud-nginx:test -f Dockerfile.test .",
+    "test": "docker run --rm willrstern/docker-cloud-nginx:test"
   },
   "dependencies": {
     "axios": "^0.7.0",
@@ -18,7 +20,10 @@
     "checksum": "^0.1.1",
     "hogan": "^1.0.2",
     "lodash": "^4.3.0",
-    "mocha": "^2.4.5",
     "ws": "^0.8.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "nginx-config-parser": "^0.1.1"
   }
 }
