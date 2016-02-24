@@ -8,7 +8,7 @@ dependencies:
   override:
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker build -t willrstern/docker-cloud-nginx:test -f Dockerfile.test .
-    - mkdir -p ~/docker; willrstern/docker-cloud-nginx:test > ~/docker/image.tar
+    - mkdir -p ~/docker; docker save willrstern/docker-cloud-nginx:test > ~/docker/image.tar
 
 test:
   override:
