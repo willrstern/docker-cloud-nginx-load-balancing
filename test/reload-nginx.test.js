@@ -66,39 +66,43 @@ describe("parseServices", () => {
   })
 
   it("creates a cert file when NGINX_CERTS is set", () => {
-    const test3Cert = readFileSync(process.env.NGINX_CERTS + "/test3.com.crt", "utf-8")
-    assert(test3Cert === "test3.com");
+    const test3Cert = readFileSync("/certs/test3.com.crt", "utf-8")
+    const expectedCert = readFileSync(__dirname + "/mocks/test3.com.crt", "utf-8")
+
+    assert.equal(test3Cert, expectedCert);
   })
 
   it("doesn't create a cert file when no NGINX_CERTS is set", () => {
-    let fail = false;
+    let noTest4Cert = false;
     try {
-      readFileSync(process.env.NGINX_CERTS + "/test4.com.crt", "utf-8")
+      readFileSync("/certs/test4.com.crt", "utf-8")
     } catch(e) {
-      fail = true
+      noTest4Cert = true
     }
-    assert(fail);
+    assert(noTest4Cert);
   })
 
   it("creates multiple, comma-separated cert files when NGINX_CERTS is set", () => {
-    const testCert = readFileSync(process.env.NGINX_CERTS + "/test.com.crt", "utf-8")
-    const test2Cert = readFileSync(process.env.NGINX_CERTS + "/test2.com.crt", "utf-8")
-    assert(testCert === "test.com" && test2Cert === "test2.com");
+    const testCert = readFileSync("/certs/test.com.crt", "utf-8")
+    const test2Cert = readFileSync("/certs/test2.com.crt", "utf-8")
+    const expectedTestCert = readFileSync(__dirname + "/mocks/test.com.crt", "utf-8")
+    const expectedTest2Cert = readFileSync(__dirname + "/mocks/test2.com.crt", "utf-8")
+
+    assert.equal(testCert, expectedTestCert)
+    assert.equal(test2Cert, expectedTest2Cert)
   })
 
   it("allows for an empty cert with comma-separated cert files", () => {
     let noTest5Cert = false;
     try {
-      readFileSync(process.env.NGINX_CERTS + "/test5.com.crt", "utf-8")
+      readFileSync("/certs/test5.com.crt", "utf-8")
     } catch(e) {
       noTest5Cert = true
     }
-    const test6Cert = readFileSync(process.env.NGINX_CERTS + "/test6.com.crt", "utf-8")
-    assert(noTest5Cert && test6Cert === "test6.com");
+    const test6Cert = readFileSync("/certs/test6.com.crt", "utf-8")
+    const expectedCert = readFileSync(__dirname + "/mocks/test6.com.crt", "utf-8")
+
+    assert(noTest5Cert)
+    assert.equal(test6Cert, expectedCert);
   })
-
-})
-
-describe("TODO: generateNewConfig", () => {
-  it("is pending")
 })

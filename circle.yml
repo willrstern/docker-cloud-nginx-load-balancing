@@ -1,0 +1,22 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
+    - docker build -t willrstern/docker-cloud-nginx:test -f Dockerfile.test .
+    - mkdir -p ~/docker; docker save willrstern/docker-cloud-nginx:test > ~/docker/image.tar
+
+test:
+  override:
+    - docker run --rm willrstern/docker-cloud-nginx:test
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - npm run deploy
