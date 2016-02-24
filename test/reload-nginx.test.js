@@ -105,5 +105,4 @@ describe("parseServices", () => {
     assert(noTest5Cert)
     assert.equal(test6Cert, expectedCert);
   })
-
 })
