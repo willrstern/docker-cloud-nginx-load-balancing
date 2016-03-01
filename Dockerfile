@@ -36,6 +36,7 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./docker-cloud-watch /usr/local/bin/docker-cloud-watch
 RUN chmod +x /usr/local/bin/docker-cloud-watch
 COPY ./lib /app/lib
+COPY ./default.crt /certs/default.crt
 
 EXPOSE 80
 
