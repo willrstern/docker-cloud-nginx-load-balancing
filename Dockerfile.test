@@ -37,6 +37,7 @@ COPY ./docker-cloud-watch /usr/local/bin/docker-cloud-watch
 RUN chmod +x /usr/local/bin/docker-cloud-watch
 COPY ./lib /app/lib
 COPY ./test /app/test
+COPY ./default.crt /certs/default.crt
 
 ENV NGINX_LB_NAME=test
 ENV NGINX_RELOAD=false
