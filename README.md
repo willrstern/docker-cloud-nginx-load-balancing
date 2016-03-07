@@ -1,8 +1,8 @@
 # docker-cloud-nginx-load-balancing
 Dynamic Nginx Load Balancing for Docker Cloud
 
-- All Docker Cloud services are acessible through Docker Cloud's API, this allows us to use Docker Cloud's API for service discovery.
-- When services stop, start, or scale in Docker Cloud, `willrstern/docker-cloud-nginx` containers will notice.
+- All Docker Cloud services are acessible through Docker Cloud's API, this allows us to use Docker Cloud's API for automated service registration & service discovery.
+- __No linking or port exposing required.__  When services stop, start, or scale in Docker Cloud, `willrstern/docker-cloud-nginx` containers will notice their private IP addresses.
 - This allows `willrstern/docker-cloud-nginx` containers to dynamically load balance all services with `NGINX_LB` ENV variables set.
 - If a config fails, it will use the last-good-config.  See Slack integration.
 
