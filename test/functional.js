@@ -1,7 +1,7 @@
 import assert from "assert"
 import { execSync } from "child_process"
 import { readFileSync } from "fs"
-import { find } from "lodash"
+import { find, snakeCase } from "lodash"
 import nginxConfigParser from "nginx-config-parser"
 
 import { getContainersToBalance, parseServices, generateNewConfig } from "../lib/reload-nginx"
@@ -32,7 +32,7 @@ describe("nginx", () => {
     describe("upstreams", () => {
       it("contains running test.com upstream nodes", () => {
         const config = nginxConfigParser.parseFromString( readFileSync(NGINX_CONFIG_FILE, 'utf-8') )
-        const upstream = config["upstream test.com"][0].server;
+        const upstream = config["upstream test_com"][0].server;
 
         assert(hasUpstream(upstream, "10.7.0.1:3000"))
         assert(hasUpstream(upstream, "10.7.0.2:3001"))
@@ -42,7 +42,7 @@ describe("nginx", () => {
 
       it("contains running test2.com upstream nodes", () => {
         const config = nginxConfigParser.parseFromString( readFileSync(NGINX_CONFIG_FILE, 'utf-8') )
-        const upstream = config["upstream test2.com"][0].server;
+        const upstream = config["upstream test_2_com"][0].server;
 
         assert(hasUpstream(upstream, "10.7.0.1:3000"))
         assert(hasUpstream(upstream, "10.7.0.2:3001"))
@@ -52,28 +52,28 @@ describe("nginx", () => {
 
       it("contains running test3.com upstream nodes", () => {
         const config = nginxConfigParser.parseFromString( readFileSync(NGINX_CONFIG_FILE, 'utf-8') )
-        const upstream = config["upstream test3.com"][0].server;
+        const upstream = config["upstream test_3_com"][0].server;
 
         assert(hasUpstream(upstream, "10.7.0.6:80"))
       })
 
       it("contains running test4.com upstream nodes", () => {
         const config = nginxConfigParser.parseFromString( readFileSync(NGINX_CONFIG_FILE, 'utf-8') )
-        const upstream = config["upstream test4.com"][0].server;
+        const upstream = config["upstream test_4_com"][0].server;
 
         assert(hasUpstream(upstream, "10.7.0.7:80"))
       })
 
       it("contains running test5.com upstream nodes", () => {
         const config = nginxConfigParser.parseFromString( readFileSync(NGINX_CONFIG_FILE, 'utf-8') )
-        const upstream = config["upstream test5.com"][0].server;
+        const upstream = config["upstream test_5_com"][0].server;
 
         assert(hasUpstream(upstream, "10.7.0.8:80"))
       })
 
       it("contains running test6.com upstream nodes", () => {
         const config = nginxConfigParser.parseFromString( readFileSync(NGINX_CONFIG_FILE, 'utf-8') )
-        const upstream = config["upstream test6.com"][0].server;
+        const upstream = config["upstream test_6_com"][0].server;
 
         assert(hasUpstream(upstream, "10.7.0.8:80"))
       })
@@ -85,7 +85,7 @@ describe("nginx", () => {
         const hosts = ["test.com", "test2.com", "test3.com", "test4.com", "test5.com", "test6.com"];
 
         hosts.forEach((host) => {
-          assert.equal(getProxyPass(config.server, host), `http://${host}`);
+          assert.equal(getProxyPass(config.server, host), `http://${snakeCase(host)}`);
         })
       })
     })
