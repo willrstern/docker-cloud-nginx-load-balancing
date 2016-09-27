@@ -1,3 +1,12 @@
+# THIS PROJECT IS DEPRECATED
+Using this on accounts with many containers can result in large-scale hits to Docker Cloud's API and can hit rate limits and fail.
+Instead, it is recommended to use these 2:
+- https://github.com/willrstern/dockercloud-etcd-registrator
+  - automatically registers all containers to `etcd`
+- https://github.com/willrstern/nginx-etcd
+  - watches `etcd` for changes and reloads nginx
+  
+  
 # docker-cloud-nginx-load-balancing
 Dynamic Nginx Load Balancing for Docker Cloud
 
